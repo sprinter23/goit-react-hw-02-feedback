@@ -1,23 +1,28 @@
 import PropTypes from 'prop-types';
 import { Text } from './Statistics.styled';
 
-export const Statistics = ({ positivePercentage, ...props }) => {
+export const Statistics = ({
+  good,
+  neutral,
+  bad,
+  total,
+  positivePercentage,
+}) => {
   return (
     <>
-      {Object.keys(props).map(option => (
-        <Text key={option}>
-          {option}: {props[option]}
-        </Text>
-      ))}
-      <Text>Positive feedback: {positivePercentage}%</Text>
+      <Text>Good: {good}</Text>
+      <Text>Neutral: {neutral}</Text>
+      <Text>Bad: {bad}</Text>
+      <Text>Total: {total}</Text>
+      <Text>Positive feedback: {positivePercentage + '%'}</Text>
     </>
   );
 };
 
 Statistics.propTypes = {
-  good: PropTypes.number,
-  neutral: PropTypes.number,
-  bad: PropTypes.number,
-  total: PropTypes.number,
-  positivePercentage: PropTypes.number,
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  positivePercentage: PropTypes.number.isRequired,
 };
